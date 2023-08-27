@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 // Database connection code (replace with your database credentials)
 $servername = "localhost";
 $username = "root";
@@ -26,7 +28,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $insert_query = "INSERT INTO users (username, user_key) VALUES ('$username', '$key')";
 
         if ($conn->query($insert_query) === TRUE) {
-            echo "Signup successful!";
+            // Set session variables with the username and key
+            $_SESSION["username"] = $username;
+            $_SESSION["key"] = $key;
+
+
+            
+
+            // Redirect to home.php after successful registration
+            echo "Registration successful";
+
+
+            exit();
         } else {
             echo "Error: " . $insert_query . "<br>" . $conn->error;
         }
