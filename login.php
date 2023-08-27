@@ -24,6 +24,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows == 1) {
         // Authentication successful
         $_SESSION["username"] = $username;
+        $_SESSION["key"] = $password;
+        
         header("Location: welcome.php"); // Redirect to a welcome page
     } else {
         // Authentication failed
