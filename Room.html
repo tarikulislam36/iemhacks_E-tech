@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.quilljs.com/1.3.6/quill.snow.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+    <title>Room</title>
+
+
+    <style>
+ 
+#side{
+    background-color: rgb(221, 221, 221);
+    height: 100vh;
+    width: 100vw;
+}
+#works{
+
+   
+    height: 93vh;
+    width: 100%;
+}
+#mySidebar{
+  display: none;
+}
+
+.openbtn{
+  display: none;
+}
+@media only screen and (max-width: 767px) {
+ 
+#side{
+    background-color: rgb(221, 221, 221);
+    height: auto;
+    width: 100vw;
+}
+ 
+ 
+  .sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+#main {
+  transition: margin-left .5s;
+  
+}
+#mySidebar{
+  display: block;
+}
+.list-group{
+  display: none;
+}
+.openbtn{
+  float: right;
+  display: block;
+}
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+
+
+
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+        <!-- Just an image -->
+
+  
+</nav>
+        
+            <div class="row">
+              <div class="col-md-2" id="side">
+                <a class="navbar-brand" href="#">
+
+                  <img src="DALL_E_2023-08-26_19.34.06_-_make_a_icon_for_class_note_and_file_taking_website__icon_should_be_similer_to_cloud_-removebg-preview.png" width="40" height="40" alt="">
+                
+                  NoteRoom
+                </a>
+                <div class="row">
+                  <div class="col-md-12">
+                    <button class="icon-button">
+                      <i class="fas fa-font"></i> Text
+                  </button>
+              
+                  <!-- File Icon Button -->
+                  <button class="file-icon-button">
+                      <i class="fas fa-file"></i> Files
+                  </button>
+                 
+                  <div id="mySidebar" class="sidebar">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+                    <a href="#">About</a>
+                    <a href="#">Services</a>
+                    <a href="#">Clients</a>
+                    <a href="#">Contact</a>
+                    <a href="#">Contact</a>
+                  </div>
+                  <button class="openbtn" onclick="openNav()">☰</button> 
+                  </div>
+                  </div>
+                 
+                  <hr style="height: 1px; background-color:#35363a;">
+                  <div class="container mt-0">
+                    <button class="btn btn" style="width: 100%; background-color:#f8f9fa; color: #181818;">
+                        <i class="fas fa-plus"></i> New
+                    </button>
+                    </div>
+                    <br>
+                      <div class="list-group">
+                          <a href="#" class="list-group-item list-group-item-action active">Dashboard</a>
+                          <a href="#" class="list-group-item list-group-item-action">Posts</a>
+                          <a href="#" class="list-group-item list-group-item-action">Users</a>
+                          <a href="#" class="list-group-item list-group-item-action">Settings</a>
+                      </div>
+                  </div>
+                  
+                
+              
+      
+              <div class="col-md-10" id="works">
+                <button id="printContentBtn" class="btn btn-success mt-2" style="position: absolute; right: 15px; top: -5px;">Print </button>
+                <div id="editor"></div>
+
+
+             
+             </div>
+               </div>
+      </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+
+    <script>
+        // Print content button click event
+$('#printContentBtn').on('click', function () {
+    // Create a new window for printing
+    var printWindow = window.open('', '', 'width=600,height=600');
+
+    // Add content to the new window
+    printWindow.document.open();
+    printWindow.document.write('<html><head><title>NoteRoom</title></head><body>');
+    printWindow.document.write('<h1></h1>');
+    printWindow.document.write('<div id="printArea">' + quill.root.innerHTML + '</div>');
+    printWindow.document.write('</body></html>');
+    printWindow.document.close();
+
+    // Trigger the print dialog
+    printWindow.print();
+
+    // Close the new window after printing
+    printWindow.close();
+});
+    </script>
+   
+   
+<script>
+  function openNav() {
+    document.getElementById("mySidebar").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+  }
+  
+  function closeNav() {
+    document.getElementById("mySidebar").style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";
+  }
+  </script>
+  </body>
+</html>
