@@ -23,8 +23,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($result->num_rows == 1) {
         // Authentication successful
+       
         $_SESSION["username"] = $username;
-        $_SESSION["key"] = $key;
+        $_SESSION["key"] = $password;
 
         header("Location: room.html"); // Redirect to a welcome page
         exit; // Ensure that no more code is executed after the redirect
